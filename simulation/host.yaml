@@ -1,0 +1,57 @@
+version: v1-draft
+exports:
+  deliver:
+    description: |
+      send it to the inbox, may only be called once
+    input:
+      contentType: application/json
+      $ref: "#/components/schemas/IncomingEmail"
+    output:
+      contentType: application/json
+      type: integer
+      description: sendmail return code
+      #$ref: "#/components/schemas/DeliverResult"
+  reply:
+    description: |
+      reply back, may only be called once
+    input:
+      contentType: application/json
+      $ref: "#/components/schemas/ReplyEmail"
+    output:
+      contentType: application/json
+      type: integer
+      description: sendmail return code
+      #$ref: "#/components/schemas/DeliverResult"
+components:
+  schemas:
+    IncomingEmail:
+      description: the incoming email
+      properties:
+        sender:
+          type: string
+          description: from
+        receiver:
+          type: string
+          description: to
+        headers:
+          type: object
+          description: to, from, subject, etc
+        body:
+          type: string
+          description: body of email
+    ReplyEmail:
+      description: the incoming email
+      properties:
+        subject:
+          type: string
+          description: email subject
+        body:
+          type: string
+          description: body of email
+    #DeliverResult:
+    #  description: Result of sending the email to the inbox
+    #  type: integer
+      #properties:
+      #  rc:
+      #    type: integer
+      #    description: sendmail return code

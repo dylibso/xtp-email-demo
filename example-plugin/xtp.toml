@@ -1,0 +1,17 @@
+app_id = "app_01j9w5k56wf9ev69z1h158axjc"
+
+# This is where 'xtp plugin push' expects to find the wasm file after the build script has run.
+bin = "dist/plugin.wasm"
+extension_point_id = "ext_01j9w5p9r3ey5avnjhm76nnf0g"
+name = "example-plugin"
+
+[scripts]
+
+  # xtp plugin build runs this script to generate the wasm file
+  build = "make"
+
+  # xtp plugin init runs this script to format the plugin code
+  format = "make format"
+
+  # xtp plugin init runs this script before running the format script
+  prepare = ""
