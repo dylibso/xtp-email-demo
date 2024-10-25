@@ -2,3 +2,4 @@ dist
 include
 *.o
 *.wasm
+.env
