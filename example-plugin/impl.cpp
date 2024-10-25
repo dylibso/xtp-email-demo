@@ -13,7 +13,14 @@ std::expected<int32_t, pdk::Error> impl::onEmail(pdk::IncomingEmail &&input) {
     std::string subject = input.headers.contains("Subject")
                               ? input.headers["Subject"].as<std::string>()
                               : "";
-    res = pdk::reply({.body = "reply body", .subject = subject});
+    if (subject.contains("Project XYZ") || input.body.contains("Project XYZ")) {
+      pdk::ReplyEmail response;
+      response.subject = "RE: " + subject;
+      response.body =
+          "Talking about Project XYZ is forbidden!!!\n\nPlease stop talking "
+          "about Project XYZ!";
+      res = pdk::reply(response);
+    }
   }
   return res;
 }

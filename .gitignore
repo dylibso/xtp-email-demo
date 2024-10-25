@@ -3,3 +3,5 @@ include
 *.o
 *.wasm
 .env
+autoresponder.sh
+.vscode

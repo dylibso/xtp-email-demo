@@ -1,0 +1,10 @@
+#!/bin/bash
+#export PERLBREW_ROOT=/path/to/perl5/perlbrew
+#export PERLBREW_HOME=/path/to/.perlbrew
+#source ${PERLBREW_ROOT}/etc/bashrc
+#perlbrew use perl-5.40.0
+DIR=$(realpath "$(dirname "${BASH_SOURCE[0]}")")
+set -o allexport
+source "$DIR/.env"
+set +o allexport
+exec perl "$DIR/autoresponder.pl" "$@"
