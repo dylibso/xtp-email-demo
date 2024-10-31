@@ -92,6 +92,11 @@ if ($@) {
 # return the plugin's exit code
 exit $rc;
 
+sub email_to_guestKey {
+    my ($address) = @_;
+    unpack('H*', $address)
+}
+
 sub parse_incoming_email {
     my ($sender, $receiver) = @_;
     my %email = (sender => $sender, receiver => $receiver);
@@ -133,9 +138,4 @@ sub send_email {
     my $fullcode = $?;
     my $code = $fullcode >> 8;
     $code
-}
-
-sub email_to_guestKey {
-    my ($address) = @_;
-    unpack('H*', $address)
 }
